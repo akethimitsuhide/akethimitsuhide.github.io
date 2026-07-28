@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>Raspberry Piで地震情報を通知するBot作った話 | akethimitsuhide's Blog</title>
+    <meta name="description" content="地震をきっかけに、Raspberry PiとPythonで地震・津波情報をDiscordに通知するBot「QTL_Bot」を開発した話。" />
+    <meta property="og:title" content="Raspberry Piで地震情報を通知するBot作った話 | akethimitsuhide's Blog" />
+    <meta property="og:description" content="地震をきっかけに、Raspberry PiとPythonで地震・津波情報をDiscordに通知するBot「QTL_Bot」を開発した話。" />
+    <meta property="og:image" content="ogp.png" />
+    <meta property="og:type" content="article" />
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <a href="index.html" class="site-title">My Blog</a>
+            <nav class="site-nav">
+                <a href="index.html">Home</a>
+                <a href="aboutme.html">About</a>
+            </nav>
+        </header>
+
+        <main class="site-main">
+            <article class="post-content">
+                <header class="post-header">
+                    <span class="post-category">Programming</span>
+                    <h1 class="post-title-full">Raspberry Piで地震情報を通知するBot作った話</h1>
+                    <time class="post-date" datetime="2026-08-01">2026年8月1日</time>
+                </header>
+
+                <div class="post-body">
+
+                    <h2 class="post-section-title">きっかけ</h2>
+
+                    <p>なぜそんなのを作ろうと思ったのか。それは</p>
+
+                    <p class="post-highlight">地震とかの災害に興味があったから（？）</p>
+
+                    <p>
+                        です。は？って思いますよね～<br>
+                        とりあえずここまでの経緯をお話しさせていただきます。
+                    </p>
+
+                    <p>
+                        自分は北陸に住んでいて、能登半島地震（2024年）などを経験しました。
+                        自分が住んでいる地域では、2022年・2023年・2024年と立て続けに地震があり、
+                        最大で震度5強を記録しました。
+                    </p>
+
+                    <p>
+                        能登半島地震が発生したとき、自分は家に居ましたが、
+                        いきなりテレビやスマホから警告音が流れてきました。
+                        自分はそのとき「物騒な正月だな」ぐらいにしか思っていませんでした。
+                    </p>
+
+                    <p>
+                        その4分後、2回目の大きな揺れが襲いました。本震です。
+                        緊急地震速報の地域が広がっていく様子、ライブ映像で家がつぶれたり
+                        土煙が出たりする様子を見て、ただ混乱するしかなかったです。
+                    </p>
+
+                    <p>
+                        揺れが収まって少し安心していたら、日本海沿岸が赤や黄色で塗られている
+                        地図が飛び込んできました。思わず「...は！？」と、ただ茫然としていました。
+                        その後も何度か揺れが続き、心配でいっぱいでした。その夜はあまり眠れませんでした。
+                    </p>
+
+                    <h2 class="post-section-title">開発までの道筋</h2>
+
+                    <p>それから1年後、私はブラウザ上で動作するアプリの開発に着手しました。</p>
+
+                    <p>使ったのはもちろん！</p>
+
+                    <p class="post-highlight"><s>流　行　り　の　人　工　知　能　で　す　☆</s></p>
+
+                    <p>その頃は、Yahoo!Japan様の強震モニタからJSONを取得→leaflet.jsを使って地図上に表示、というプログラムでした。</p>
+
+                    <p><s>ちなみに、それがYahoo!Japan様の規約に触れると判明したため、現在は実質没プロジェクトとなっています。</s></p>
+
+                    <p>次に開発したのが、緊急地震速報と地震情報、津波情報をダッシュボードで表示するWebアプリ。</p>
+
+                    <p><s>使ったのはもちろん人工知能です。</s></p>
+
+                    <p>実際に動作しましたが、なんか物足りないな～と思っていました。</p>
+
+                    <p>そういうわけで目を付けたのが</p>
+
+                    <p class="post-highlight">D　i　s　c　o　r　d　で　す　☆</p>
+
+                    <p>なんでDiscordかというと...まあなんとなくです（）</p>
+
+                    <p><s>※実際の理由は、その時期にScratchのアカウントがBAN寸前の状態だったので、「一旦Scratchでの活動はやめよっかな～」というとてもあほくさいものでした）</s></p>
+
+                    <p><s>開発に使ったのはもちろん人工知能です（ｎ回目）</s></p>
+
+                    <p>...では、初期のBotの動作を見てみましょう。こちらです。</p>
+
+                    <div class="post-images">
+                        <img src="syoki_bot1.png" alt="初期Bot スクリーンショット1" class="post-img" />
+                        <img src="syoki_bot2.png" alt="初期Bot スクリーンショット2" class="post-img" />
+                        <img src="syoki_bot3.png" alt="初期Bot スクリーンショット3" class="post-img" />
+                    </div>
+
+                    <p>色々とツッコミどころ満載ですね。</p>
+
+                    <p>では、現在のBotと比べてみましょう。こちらです。</p>
+
+                    <div class="post-images">
+                        <img src="genzai_bot1.png" alt="現在Bot スクリーンショット1" class="post-img" />
+                        <img src="genzai_bot2.png" alt="現在Bot スクリーンショット2" class="post-img" />
+                        <img src="genzai_bot3.png" alt="現在Bot スクリーンショット3" class="post-img" />
+                        <img src="genzai_bot4.png" alt="現在Bot スクリーンショット4" class="post-img" />
+                        <img src="genzai_bot5.png" alt="現在Bot スクリーンショット5" class="post-img" />
+                    </div>
+
+                    <p>一目瞭然ですね。</p>
+
+                    <h2 class="post-section-title">開発で大変だったこと</h2>
+
+                    <h3 class="post-subsection-title">4000行のbot.pyを8つに分割した話</h3>
+
+                    <p>
+                        開発を続けるうちに、最初は数百行だったbot.pyがいつの間にか
+                        4000行を超えるモンスターファイルになっていました。
+                    </p>
+
+                    <p>
+                        機能を追加するたびに「どこに何を書いたっけ？」となり、
+                        バグを直そうとして別のバグを生む、という無限ループに突入。
+                        さすがにこれはまずいと思い、discord.pyの「Cog」という機能を使って
+                        ファイルを分割する<strong>リファクタリング</strong>を決行しました。
+                    </p>
+
+                    <p>分割後の構成はこんな感じです。</p>
+
+                    <ul class="post-list">
+                        <li>QuakeEewCog　― 地震・緊急地震速報</li>
+                        <li>TsunamiCog　― 津波情報</li>
+                        <li>VolcanoCog　― 火山情報</li>
+                        <li>UsgsCog　― 海外地震（USGS）</li>
+                        <li>OtherInfoCog　― その他気象情報</li>
+                        <li>SystemCog　― ステータス・管理コマンド</li>
+                        <li>KyoshinMonitorCog　― 強震モニター連携</li>
+                        <li>ApmCog　― パフォーマンス監視</li>
+                    </ul>
+
+                    <p>
+                        おかげでコードがだいぶ見通しよくなりました。
+                        <s>AIに手伝ってもらったのはここだけの話です。</s>
+                    </p>
+
+                    <h3 class="post-subsection-title">ファイルが勝手に戻っていた話</h3>
+
+                    <p>
+                        リファクタリング中に、不思議な現象に悩まされました。
+                        修正したはずのbot.pyが、なぜかいつの間にか古いバージョンに戻っているのです。
+                    </p>
+
+                    <p>
+                        「さっき直したのに…？」と首をかしげながら <code>git status</code> を確認すると、
+                        「差分なし」と表示される。でも実際のファイルの中身は明らかに古い。
+                    </p>
+
+                    <p class="post-highlight">差分なし ≠ 修正が反映されている</p>
+
+                    <p>
+                        原因はローカルファイルとコミット済みの内容が乖離していたことでした。
+                        修正したつもりが実はディスクに書き込まれておらず、
+                        <code>git status</code> が「変更なし」と返していただけだったのです。
+                    </p>
+
+                    <p>
+                        それ以来、修正を加えた後は必ず <code>grep</code> や <code>wc -l</code> で
+                        ファイルの中身を直接確認するようにしています。
+                        Gitを過信するのは危険だと学んだ出来事でした。
+                    </p>
+
+                </div>
+
+                <footer class="post-footer">
+                    <a href="index.html">&larr; 記事一覧に戻る</a>
+                </footer>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 akethimitsuhide. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- ライトボックス -->
+    <div class="lightbox-overlay" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+    </div>
+
+    <script>
+        const overlay = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('lightbox-close');
+
+        document.querySelectorAll('.post-img').forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                overlay.classList.add('open');
+            });
+        });
+
+        overlay.addEventListener('click', () => overlay.classList.remove('open'));
+        closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+        lightboxImg.addEventListener('click', e => e.stopPropagation());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') overlay.classList.remove('open');
+        });
+    </script>
+
+</body>
+</html>
