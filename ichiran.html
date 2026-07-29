@@ -4,12 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css">
-    <title>akethimitsuhide's Blog</title>
-
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <meta name="description" content="これはakethimitsuhideのメインページです。ゆっくりしていってね!!! This is akethimitsuhide's main page. Stay awhile and relax!!!" />
-    <meta property="og:title" content="akethimitsuhide's Blog" />
-    <meta property="og:description" content="これはakethimitsuhideのメインページです。ゆっくりしていってね!!!" />
+    <title>記事一覧 | akethimitsuhide's Blog</title>
+    <meta name="description" content="akethimitsuhide's Blogの全記事一覧です。" />
+    <meta property="og:title" content="記事一覧 | akethimitsuhide's Blog" />
+    <meta property="og:description" content="akethimitsuhide's Blogの全記事一覧です。" />
     <meta property="og:image" content="ogp.png" />
     <meta property="og:type" content="website" />
 </head>
@@ -25,16 +24,8 @@
         </header>
 
         <main class="site-main">
-            <section class="welcome-section">
-                <h1 class="welcome-title">Welcome to my page!</h1>
-                <p class="welcome-text">
-                    これはakethimitsuhideのメインページです。<br>
-                    ゆっくりしていってね!!!
-                </p>
-            </section>
-
             <section>
-                <h2 class="section-title">Latest Posts</h2>
+                <h1 class="section-title">記事一覧</h1>
                 <div class="posts-grid">
 
                     <article class="post-card">
@@ -49,23 +40,23 @@
                     </article>
 
                     <article class="post-card">
+                        <span class="post-category">Programming</span>
+                        <a href="quake_bot.html">
+                            <h3 class="post-title">Raspberry Piで地震情報を通知するBot作った話</h3>
+                        </a>
+                        <p class="post-excerpt">
+                            地震・津波情報をリアルタイムに通知するDiscordボット「QTL_Bot」をRaspberry PiとPythonで開発しました。
+                        </p>
+                        <time class="post-date" datetime="2026-08-01">2026年8月1日</time>
+                    </article>
+
+                    <article class="post-card">
                         <span class="post-category">Web Design</span>
                         <a href="burogu_kaisetsu.html">
                             <h3 class="post-title">ブログを開設しました！</h3>
                         </a>
                         <p class="post-excerpt">
-                            自分のブログ開設に向けて準備中です。これからWebデザインやプログラミング、<s>好きな曲等の趣味</s>について書いていきます！
-                        </p>
-                        <time class="post-date" datetime="2026-07-27">2026年7月27日</time>
-                    </article>
-
-                    <article class="post-card">
-                        <span class="post-category">Programming</span>
-                        <a href="quake_bot.html">
-                            <h3 class="post-title">Raspberry PiでDiscordボットを作った話</h3>
-                        </a>
-                        <p class="post-excerpt">
-                            地震・津波情報をリアルタイムに通知するDiscordボット「QTL_Bot」をRaspberry PiとPythonで開発しました。
+                            自分のブログ開設に向けて準備中です。これからWebデザインやプログラミングについて書いていきます！
                         </p>
                         <time class="post-date" datetime="2026-07-27">2026年7月27日</time>
                     </article>
