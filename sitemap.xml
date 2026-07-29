@@ -22,12 +22,18 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- 公開後に追加予定 -->
-  <!-- <url>
-    <loc>https://akethimitsuhide.github.io/quake_bot.html</loc>
-    <lastmod>2026-07-27</lastmod>
+  <url>
+    <loc>https://akethimitsuhide.github.io/kumamoto_quake.html</loc>
+    <lastmod>2026-07-29</lastmod>
     <changefreq>never</changefreq>
     <priority>0.6</priority>
-  </url> -->
+  </url>
+
+  <url>
+    <loc>https://akethimitsuhide.github.io/quake_bot.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
 
 </urlset>
