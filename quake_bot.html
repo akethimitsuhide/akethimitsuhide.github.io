@@ -137,14 +137,16 @@
                     <p>分割後の構成はこんな感じです。</p>
 
                     <ul class="post-list">
-                        <li>QuakeEewCog　― 地震・緊急地震速報</li>
+                        <li>EewCog　― 緊急地震速報（Wolfx / P2P EEW）専用</li>
+                        <li>QuakeInfoCog　― 地震情報・震度速報・P2P地震情報ポーリング</li>
+                        <li>AudioCog　― 音声読み上げ・MP3再生（EewCog / QuakeInfoCog が共有）</li>
                         <li>TsunamiCog　― 津波情報</li>
-                        <li>VolcanoCog　― 火山情報</li>
+                        <li>VolcanoCog　― 火山情報・噴火速報・噴火警報</li>
                         <li>UsgsCog　― 海外地震（USGS）</li>
-                        <li>OtherInfoCog　― その他気象情報</li>
-                        <li>SystemCog　― ステータス・管理コマンド</li>
-                        <li>KyoshinMonitorCog　― 強震モニター連携</li>
-                        <li>ApmCog　― パフォーマンス監視</li>
+                        <li>OtherInfoCog　― 長周期地震動・気象庁その他情報</li>
+                        <li>SystemCog　― ステータス・Web Dashboard・エラー監視・リソース監視</li>
+                        <li>KyoshinMonitorCog　― 強震モニタ画像解析による揺れ検知</li>
+                        <li>ApmCog　― Mackerel APM 連携（OpenTelemetry）</li>
                     </ul>
 
                     <p>
